@@ -4,12 +4,24 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 
+# OS
+.DS_Store
+
 # Large data / results
 *.pkl
-*.pt
 *.safetensors
 *.bin
 *.h5
+
+# Per-seed provenance dumps (canonical results live in results_db/models/ + results_db/compiled/)
+results_db/seeds/
+
+# Local-only artifacts from earlier iterations
+archive/
+
+# Local tooling configs (kept on disk, not pushed)
+.claude/
+CLAUDE.md
 
 # Environment
 .env

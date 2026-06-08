@@ -1,6 +1,0 @@
-{
-  "rank_ratio_vs_nonlinear_gain": -0.012084239216415642,
-  "depth_vs_rank_ratio": -0.6431303916098953,
-  "depth_vs_nonlinear_gain": 0.5336663987323031,
-  "top1_var_vs_nonlinear_gain": 0.48165699701619474
-}
