@@ -1,0 +1,50 @@
+{
+  "correlations": {
+    "rank_ratio_vs_nonlinear_gain": -0.012084239216415642,
+    "depth_vs_rank_ratio": -0.6431303916098953,
+    "depth_vs_nonlinear_gain": 0.5336663987323031,
+    "top1_var_vs_nonlinear_gain": 0.48165699701619474
+  },
+  "depth_rank_means": [
+    {
+      "l": 1,
+      "rank_ratio": 0.9850550095240275,
+      "nonlinear_gain": 0.003478090436134023
+    },
+    {
+      "l": 2,
+      "rank_ratio": 0.9809064467748007,
+      "nonlinear_gain": 0.005663126898415516
+    },
+    {
+      "l": 3,
+      "rank_ratio": 0.8989093899726868,
+      "nonlinear_gain": 0.003986588420619503
+    },
+    {
+      "l": 4,
+      "rank_ratio": 0.6109031438827515,
+      "nonlinear_gain": 0.009913950323788058
+    }
+  ],
+  "total_samples": 28,
+  "parameters": {
+    "n": 64,
+    "m_values": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "l_values": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "n_steps": 100,
+    "sparsity": 0.1
+  }
+}

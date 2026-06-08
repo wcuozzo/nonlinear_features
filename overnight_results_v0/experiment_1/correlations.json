@@ -1,0 +1,7 @@
+{
+  "nonlinear_gain_vs_interference_reduction": 0.08700552312192429,
+  "nonlinear_gain_vs_pairwise_nonlinearity": 0.7005737432067042,
+  "nonlinear_gain_vs_compression": -0.1254665980755789,
+  "interference_reduction_vs_compression": 0.42389820450858995,
+  "effective_features_vs_nonlinear_gain": -0.4543881624883667
+}

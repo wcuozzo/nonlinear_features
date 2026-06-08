@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Large data / results
+*.pkl
+*.pt
+*.safetensors
+*.bin
+*.h5
+
+# Environment
+.env
+.venv/

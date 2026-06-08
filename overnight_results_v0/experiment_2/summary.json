@@ -1,0 +1,9 @@
+{
+  "exp_a_strength_gain_correlation": -0.7777332510668103,
+  "exp_b_within_cluster_nonlinearity": 0.062071619796500145,
+  "exp_b_between_cluster_nonlinearity": 0.05884518689708784,
+  "exp_b_ttest_p_value": 0.4774863801782556,
+  "exp_d_avg_nonlinear_gain_increase": -0.12202148497485296,
+  "cooccurrence_nonlinearity_correlation": 0.03196822106838226,
+  "cooccurrence_nonlinearity_p_value": 0.4774861046682476
+}

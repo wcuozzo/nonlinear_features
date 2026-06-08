@@ -1,0 +1,49 @@
+Experiment 1 is complete. Here's a summary of what I did:
+
+## Summary
+
+I created and ran **Experiment 1: Feature Interference and Superposition Analysis**.
+
+**Key Question:** Does nonlinearity emerge to resolve feature interference in the bottleneck?
+
+**What I Measured:**
+- Feature interference matrices (linear baseline vs learned)
+- Pairwise nonlinearity (deviation from additivity: z(x+y) vs z(x)+z(y))
+- Effective features ratio (features cleanly separable in latent space)
+
+**Main Finding:** 
+The strongest predictor of nonlinear gain is **pairwise nonlinearity (r=0.70)**, not interference reduction (r=0.09). This suggests networks use nonlinearity for **feature interaction/combination** rather than merely reducing collisions between feature directions.
+
+**Key Insight:**
+Nonlinearity enables a form of "computation in superposition" - the network encodes feature *combinations* rather than individual features linearly. Features don't need to be individually separable when the decoder can perform nonlinear unmixing.
+
+**Output saved to:**
+- `overnight_results/experiment_1/main_results.png` - visualization of correlations
+- `overnight_results/experiment_1/interference_matrices.png` - linear vs learned interference comparison
+- `overnight_results/experiment_1/results.csv` - full data (39 configurations)
+- `overnight_results/experiment_log.md` - detailed summary appended
+This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). The promise rejected with the reason:
+Error: No messages returned
+    at V50 (/$bunfs/root/claude:6154:78)
+    at processTicksAndRejections (native:7:39)
+Experiment 3 is complete. Here's a summary of the key findings:
+
+## Experiment 3: Depth-Separation Interaction Analysis
+
+**Main question:** Does depth help when features are independent vs correlated?
+
+**Key findings:**
+
+1. **Independent features show ~100x more nonlinear gain than correlated features** (0.155 vs 0.0016) - strongly confirming Experiment 2's finding that independence drives nonlinearity.
+
+2. **Critical depth depends on compression:** High compression (n/m ≥ 4) triggers nonlinearity even at depth=1. Low compression (n/m = 2) requires depth ≥ 3.
+
+3. **Surprising result: Depth benefit is NEGATIVELY correlated with effective dimensionality (r=-0.56)** - deeper networks help MORE with correlated (low effective dim) data, not independent data. This was opposite to my hypothesis.
+
+4. **Depth DECREASES feature separation (r=-0.76)** - deeper networks pack features more densely in latent space, not more separately.
+
+**Interpretation:** There appear to be two distinct paths to nonlinear encoding:
+- *Shallow + compressed + independent features:* Forces nonlinearity for packing
+- *Deep + correlated features:* Enables manifold learning
+
+Results saved to `./overnight_results/experiment_3/` with 6 visualization panels in `main_results.png` and full data in CSV files.

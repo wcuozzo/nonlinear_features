@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "n": 128,
+      "m": 8,
+      "l": 1,
+      "compression_ratio": 16,
+      "condition": "fixed",
+      "n_steps": 100,
+      "seed": 0,
+      "n_params": 35208,
+      "final_loss": 0.02888851836323738,
+      "linearity_score": 0.9909976990893483,
+      "mse_full": 0.029313335195183754,
+      "mse_linear": 0.029301496222615242,
+      "nonlinear_gain": -0.00040403972678286775,
+      "top1_var": 

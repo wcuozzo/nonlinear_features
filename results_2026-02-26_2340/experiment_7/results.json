@@ -1,0 +1,46 @@
+{
+  "stats": {
+    "mean_critical_step": 163.3333,
+    "std_critical_step": 25.6038,
+    "min_critical_step": 120,
+    "max_critical_step": 200,
+    "configs_never_positive": 0,
+    "corr_threshold_vs_final": -0.5113,
+    "l=2_mean_threshold": 173.3333,
+    "l=2_mean_final_gain": 0.0039,
+    "l=4_mean_threshold": 153.3333,
+    "l=4_mean_final_gain": 0.0047
+  },
+  "config_summary": {
+    "n=64, m=4, l=2": {
+      "threshold": 160,
+      "final_gain": 0.005354,
+      "CR": 16
+    },
+    "n=64, m=4, l=4": {
+      "threshold": 160,
+      "final_gain": 0.004663,
+      "CR": 16
+    },
+    "n=64, m=8, l=2": {
+      "threshold": 200,
+      "final_gain": 0.003463,
+      "CR": 8
+    },
+    "n=64, m=8, l=4": {
+      "threshold": 160,
+      "final_gain": 0.00449,
+      "CR": 8
+    },
+    "n=128, m=8, l=2": {
+      "threshold": 160,
+      "final_gain": 0.002778,
+      "CR": 16
+    },
+    "n=128, m=8, l=4": {
+      "threshold": 140,
+      "final_gain": 0.004991,
+      "CR": 16
+    }
+  }
+}
