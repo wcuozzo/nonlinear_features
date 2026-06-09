@@ -647,7 +647,8 @@ def fix_group(n: int, m: int, S: float, max_l: int, K: int,
 # ────────────────────────────────────────────────────────────────────────
 
 def _gpu_worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir,
-                near_warm_start_K=None, near_warm_start_lr_mult=0.3):
+                near_warm_start_K=None, near_warm_start_lr_mult=0.3,
+                master_seed=42, run_id=None):
     """One worker per GPU: pulls (n, m, S, max_l, violated_ls) groups and fixes them."""
     global device
     import core as _core
@@ -656,6 +657,9 @@ def _gpu_worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir,
     _core.device = device
     _sweep.device = device       # measure_batched_linearity uses this
     torch.cuda.set_device(gpu_id)
+    # Per-worker deterministic seed: same master_seed -> same per-worker batches.
+    torch.manual_seed(master_seed + gpu_id)
+    np.random.seed(master_seed + gpu_id)
 
     store = ResultsStore(store_dir)
     while True:
@@ -671,7 +675,8 @@ def _gpu_worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir,
                                 models_dir=os.path.join(store_dir, 'models'),
                                 verbose=True,
                                 near_warm_start_K=near_warm_start_K,
-                                near_warm_start_lr_mult=near_warm_start_lr_mult)
+                                near_warm_start_lr_mult=near_warm_start_lr_mult,
+                                run_id=run_id)
             summary['elapsed_sec'] = time.time() - t0
             summary['gpu_id'] = gpu_id
             result_queue.put((idx, summary))
@@ -706,6 +711,24 @@ def main():
                         help='LR multiplier for the near-warm-start arm '
                              '(applied to lr_peak). Default 0.3.')
     parser.add_argument('--list-only', action='store_true')
+    parser.add_argument('--master-seed', type=int, default=42,
+                        help='Master seed for batch sampling. Same seed -> same models.')
+    parser.add_argument('--run-id', default=None,
+                        help='Run id tag stored with each seed record.')
+
+    parser.add_argument('--all-groups', action='store_true',
+                        help='Iterate over EVERY (n, m, S) in the canonical sweep '
+                             'rather than only violation groups. Use this for a fresh '
+                             'single-sweep run.')
+    parser.add_argument('--sweep-ns', default='16,32,64,128',
+                        help='Comma-separated n values (with --all-groups). '
+                             'Default: 16,32,64,128')
+    parser.add_argument('--sweep-ms', default='2,4,8,16,32,64',
+                        help='Comma-separated m values (with --all-groups). '
+                             'Default: 2,4,8,16,32,64')
+    parser.add_argument('--sweep-Ss', default='0.85,0.9,0.95',
+                        help='Comma-separated S values (with --all-groups). '
+                             'Default: 0.85,0.9,0.95')
     args = parser.parse_args()
 
     global device
@@ -714,12 +737,26 @@ def main():
         core.device = device
     print(f'Device: {device}, n_gpus: {args.n_gpus}')
 
-    violations = find_violations(args.store_dir)
-    if violations.empty:
-        print('No violations to fix!')
-        return
-
-    groups = group_violations_by_nms(violations)
+    if args.all_groups:
+        ns = [int(x) for x in args.sweep_ns.split(',')]
+        ms = [int(x) for x in args.sweep_ms.split(',')]
+        Ss = [float(x) for x in args.sweep_Ss.split(',')]
+        # max_l=4 fixed; violated_ls=[2,3,4] forces the chain to retrain every l>=2
+        # since all of l=2,3,4 are "treated as violations" → fix_group runs them all
+        groups = []
+        for n in ns:
+            for m in ms:
+                if m >= n:
+                    continue
+                for S in Ss:
+                    groups.append(dict(n=n, m=m, S=S, max_l=4,
+                                       max_gap=0.0, violated_ls=[2, 3, 4]))
+    else:
+        violations = find_violations(args.store_dir)
+        if violations.empty:
+            print('No violations to fix!')
+            return
+        groups = group_violations_by_nms(violations)
 
     # Filter
     if args.max_n is not None:
@@ -757,7 +794,8 @@ def main():
                 target=_gpu_worker,
                 args=(gpu_id, task_queue, result_queue,
                       args.K, args.batch_size, args.store_dir,
-                      args.near_warm_start_K, args.near_warm_start_lr_mult))
+                      args.near_warm_start_K, args.near_warm_start_lr_mult,
+                      args.master_seed, args.run_id))
             p.start()
             workers.append(p)
         print(f'Launched {args.n_gpus} GPU workers')
@@ -797,6 +835,8 @@ def main():
 
     else:
         # ─── Single-process path ────────────────────────────────────
+        torch.manual_seed(args.master_seed)
+        np.random.seed(args.master_seed)
         store = ResultsStore(args.store_dir)
         summaries = []
         for i, g in enumerate(groups):
@@ -809,7 +849,8 @@ def main():
                                     store=store,
                                     batch_size=args.batch_size,
                                     near_warm_start_K=args.near_warm_start_K,
-                                    near_warm_start_lr_mult=args.near_warm_start_lr_mult)
+                                    near_warm_start_lr_mult=args.near_warm_start_lr_mult,
+                                    run_id=args.run_id)
                 summaries.append(summary)
                 elapsed = (time.time() - start) / 60
                 print(f'  Stage results: ' +

@@ -413,12 +413,15 @@ def push_one_config(n, m, l, S, K, store, batch_size=8192, verbose=True,
 
 def _worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir,
             steps_mult=1.0, grad_clip=None, ema_decay=None,
-            near_warm_start_K=None, near_warm_start_lr_mult=0.3):
+            near_warm_start_K=None, near_warm_start_lr_mult=0.3,
+            master_seed=42):
     global device
     device = torch.device(f'cuda:{gpu_id}')
     core.device = device
     _sweep.device = device
     torch.cuda.set_device(gpu_id)
+    torch.manual_seed(master_seed + gpu_id)
+    np.random.seed(master_seed + gpu_id)
     import sweep_violation_fix as _svf
     _svf.device = device
 
@@ -463,6 +466,7 @@ if __name__ == '__main__':
                              'Set to 0 to disable.')
     parser.add_argument('--near-warm-start-lr-mult', type=float, default=0.3,
                         help='LR multiplier for the near-warm-start arm. Default 0.3.')
+    parser.add_argument('--master-seed', type=int, default=42)
     args = parser.parse_args()
 
     configs = []
@@ -486,7 +490,8 @@ if __name__ == '__main__':
         p = ctx.Process(target=_worker,
                         args=(gid, tq, rq, args.K, args.batch_size, args.store_dir,
                               args.steps_mult, args.grad_clip, args.ema_decay,
-                              args.near_warm_start_K, args.near_warm_start_lr_mult))
+                              args.near_warm_start_K, args.near_warm_start_lr_mult,
+                              args.master_seed))
         p.start()
         workers.append(p)
 

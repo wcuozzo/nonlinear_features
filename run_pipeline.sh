@@ -13,13 +13,20 @@
 
 set -euo pipefail
 
-STORE_DIR="results_db"
-N_GPUS=8
-K=10
-PUSH_K=30
-BATCH_SIZE=8192
+STORE_DIR="${STORE_DIR:-results_db}"
+N_GPUS=${N_GPUS:-8}
+K=${K:-10}
+PUSH_K=${PUSH_K:-30}
+BATCH_SIZE=${BATCH_SIZE:-8192}
 DEVICE="${DEVICE:-cuda:0}"
 PY="${PY:-python3}"
+MASTER_SEED=${MASTER_SEED:-42}
+RUN_ID="${RUN_ID:-pipeline_$(date +%Y%m%d_%H%M%S)}"
+# Near-warm-start arm (the optimization recipe we discovered)
+NWS_K=${NWS_K:-5}
+NWS_LR_MULT=${NWS_LR_MULT:-0.3}
+# --all-groups vs (default) violations-only
+ALL_GROUPS_FLAG=${ALL_GROUPS_FLAG:-}
 
 mode="${1:-full}"
 
@@ -28,13 +35,17 @@ echo "Store: $STORE_DIR  GPUs: $N_GPUS  K: $K  push_K: $PUSH_K"
 
 bootstrap_step() {
   echo "[step] bootstrap missing l=1 models"
-  $PY code/bootstrap_l1.py --store-dir $STORE_DIR --n-gpus $N_GPUS --K 8
+  $PY code/bootstrap_l1.py --store-dir $STORE_DIR --n-gpus $N_GPUS --K 8 \
+      --master-seed $MASTER_SEED
 }
 
 fix_step() {
   echo "[step] sweep violation fix"
   $PY code/sweep_violation_fix.py --store-dir $STORE_DIR --n-gpus $N_GPUS \
-      --K $K --batch-size $BATCH_SIZE
+      --K $K --batch-size $BATCH_SIZE \
+      --master-seed $MASTER_SEED --run-id $RUN_ID \
+      --near-warm-start-K $NWS_K --near-warm-start-lr-mult $NWS_LR_MULT \
+      $ALL_GROUPS_FLAG
 }
 
 push_step() {
@@ -53,7 +64,9 @@ push_step() {
 64,32,4,0.85 64,32,4,0.9 64,32,4,0.95 \
 64,8,2,0.85 64,8,2,0.9 64,8,3,0.95"
   $PY code/frontier_push.py --store-dir $STORE_DIR --n-gpus $N_GPUS \
-      --K $PUSH_K --batch-size $BATCH_SIZE --configs $CONFIGS
+      --K $PUSH_K --batch-size $BATCH_SIZE --configs $CONFIGS \
+      --master-seed $MASTER_SEED \
+      --near-warm-start-K $NWS_K --near-warm-start-lr-mult $NWS_LR_MULT
 }
 
 analyze_step() {

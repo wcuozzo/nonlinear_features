@@ -124,11 +124,13 @@ def bootstrap_config(n, m, S, K, store, batch_size=4096):
     return best_mse
 
 
-def _gpu_worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir):
+def _gpu_worker(gpu_id, task_queue, result_queue, K, batch_size, store_dir,
+                master_seed=42):
     global device
     import core as _core
     device = torch.device(f'cuda:{gpu_id}')
     _core.device = device
+    torch.manual_seed(master_seed + gpu_id)
     store = ResultsStore(store_dir)
     while True:
         item = task_queue.get()
@@ -150,6 +152,7 @@ def main():
     parser.add_argument('--K', type=int, default=8)
     parser.add_argument('--batch-size', type=int, default=4096)
     parser.add_argument('--n-gpus', type=int, default=1)
+    parser.add_argument('--master-seed', type=int, default=42)
     args = parser.parse_args()
 
     missing = find_missing(args.store_dir)
@@ -173,7 +176,8 @@ def main():
         workers = []
         for gid in range(args.n_gpus):
             p = ctx.Process(target=_gpu_worker,
-                            args=(gid, tq, rq, args.K, args.batch_size, args.store_dir))
+                            args=(gid, tq, rq, args.K, args.batch_size, args.store_dir,
+                                  args.master_seed))
             p.start()
             workers.append(p)
         completed = 0
