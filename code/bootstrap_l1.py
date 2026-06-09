@@ -85,18 +85,39 @@ def train_l1(n, m, S, seed, max_steps=8000, batch_size=4096):
     return model, eval_mse(model, S)
 
 
-def find_missing(store_dir):
-    """Return list of (n, m, S) needing l=1 model bootstrap."""
-    seeds_dir = Path(store_dir) / 'seeds'
+def find_missing(store_dir, all_groups=False, ns=None, ms=None, Ss=None):
+    """Return list of (n, m, S) needing l=1 model bootstrap.
+
+    Default mode: scans existing seed JSONs and flags any without a saved .pt
+    (gap-fill behavior).
+
+    With all_groups=True: enumerates the full Cartesian product (ns × ms × Ss)
+    with m < n, and reports every (n, m, S) where the .pt does not yet exist.
+    Use this for fresh canonical sweeps.
+    """
     models_dir = Path(store_dir) / 'models'
     missing = []
-    for path in sorted(seeds_dir.glob('*_l1_*.json')):
-        data = json.load(open(path))
-        cfg = data['config']
-        n, m, S = cfg['n'], cfg['m'], cfg['S']
-        model_path = models_dir / f'model_n{n}_m{m}_l1_S{S}.pt'
-        if not model_path.exists():
-            missing.append((n, m, S))
+    if all_groups:
+        ns = ns or [16, 32, 64, 128]
+        ms = ms or [2, 4, 8, 16, 32, 64]
+        Ss = Ss or [0.85, 0.9, 0.95]
+        for n in ns:
+            for m in ms:
+                if m >= n:
+                    continue
+                for S in Ss:
+                    model_path = models_dir / f'model_n{n}_m{m}_l1_S{S}.pt'
+                    if not model_path.exists():
+                        missing.append((n, m, S))
+    else:
+        seeds_dir = Path(store_dir) / 'seeds'
+        for path in sorted(seeds_dir.glob('*_l1_*.json')):
+            data = json.load(open(path))
+            cfg = data['config']
+            n, m, S = cfg['n'], cfg['m'], cfg['S']
+            model_path = models_dir / f'model_n{n}_m{m}_l1_S{S}.pt'
+            if not model_path.exists():
+                missing.append((n, m, S))
     return missing
 
 
@@ -153,9 +174,13 @@ def main():
     parser.add_argument('--batch-size', type=int, default=4096)
     parser.add_argument('--n-gpus', type=int, default=1)
     parser.add_argument('--master-seed', type=int, default=42)
+    parser.add_argument('--all-groups', action='store_true',
+                        help='Enumerate full sweep (16,32,64,128) × (2,4,8,16,32,64) × '
+                             '(0.85,0.9,0.95) and bootstrap every l=1 with no saved model. '
+                             'Use for fresh canonical sweeps.')
     args = parser.parse_args()
 
-    missing = find_missing(args.store_dir)
+    missing = find_missing(args.store_dir, all_groups=args.all_groups)
     print(f'Missing l=1 models: {len(missing)}')
     for n, m, S in missing:
         print(f'  n={n} m={m} S={S}')

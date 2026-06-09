@@ -47,7 +47,7 @@ mkdir -p "$STORE_DIR"
 echo
 echo "[1/5] Bootstrap l=1 for every (n, m, S)"
 $PY code/bootstrap_l1.py --store-dir "$STORE_DIR" --n-gpus $N_GPUS --K $K \
-    --batch-size $BATCH_SIZE --master-seed $MASTER_SEED
+    --batch-size $BATCH_SIZE --master-seed $MASTER_SEED --all-groups
 
 # -------- 2. Progressive l=1 -> l=4 chain on every group with near-warm-start --------
 echo
