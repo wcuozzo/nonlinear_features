@@ -1,0 +1,152 @@
+{
+  "source": {
+    "store": "results/nonlinear_representations/sweep_results",
+    "status": "reported",
+    "note": "Saved all-untied sweep used for the reported analysis. The included training code is the current implementation; see REPRODUCING.md for rerun guidance."
+  },
+  "source_manifest": null,
+  "configs": 216,
+  "fits": {
+    "1": {
+      "A": 0.2725350004083685,
+      "c": {
+        "0.85": 1.1208457217592014,
+        "0.9": 0.842604342275469,
+        "0.95": 0.4320553217546915
+      },
+      "log_mse_r2": 0.9793373485771688,
+      "configs": 54
+    },
+    "2": {
+      "A": 0.981561565655727,
+      "c": {
+        "0.85": 1.0226450456108862,
+        "0.9": 0.8228777318162308,
+        "0.95": 0.5236087442731068
+      },
+      "log_mse_r2": 0.9848856442705065,
+      "configs": 54
+    },
+    "3": {
+      "A": 1.2257025414597356,
+      "c": {
+        "0.85": 1.2534957943199831,
+        "0.9": 0.9911683066433568,
+        "0.95": 0.6116300608702226
+      },
+      "log_mse_r2": 0.9868448093893911,
+      "configs": 54
+    },
+    "4": {
+      "A": 1.643336849951269,
+      "c": {
+        "0.85": 1.283518879623201,
+        "0.9": 0.9922027860924745,
+        "0.95": 0.6356307887832955
+      },
+      "log_mse_r2": 0.9908175215571107,
+      "configs": 54
+    }
+  },
+  "geometry": {
+    "depths": [
+      2,
+      3,
+      4
+    ],
+    "center": "z(0)",
+    "extent_quantile": 0.8,
+    "margin": 1.25,
+    "contour": "log1p(L2 norm of decoder output)",
+    "grid_points": 700,
+    "speed": {
+      "quantity": "L2 norm of dz(t e_i)/dt",
+      "samples": 1201,
+      "method": "float64 finite differences",
+      "scale": "log; shared across depths",
+      "normalization": "none"
+    },
+    "rendering_style": {
+      "palette_n": 64,
+      "palette_indices": [
+        0,
+        31,
+        39,
+        5,
+        6,
+        25,
+        43,
+        33,
+        49,
+        28,
+        62,
+        36,
+        45,
+        51,
+        58,
+        24,
+        53,
+        9,
+        13,
+        47,
+        37,
+        1,
+        14,
+        16,
+        18,
+        11,
+        23,
+        19,
+        63,
+        30,
+        55,
+        7,
+        22,
+        61,
+        56,
+        54,
+        21,
+        8,
+        57,
+        29,
+        46,
+        34,
+        3,
+        17,
+        38,
+        12,
+        50,
+        27,
+        48,
+        52,
+        60,
+        59,
+        42,
+        35,
+        32,
+        10,
+        26,
+        15,
+        41,
+        2,
+        20,
+        4,
+        40,
+        44
+      ],
+      "reference_checkpoint_sha256": "529363ca9bad896a14af1373ef855d429fb061d6cfcc9dfe8c04dcee509c8705"
+    }
+  },
+  "inputs": {
+    "results/nonlinear_representations/sweep_results/compiled/sweep_results_precise.csv": "40ec6f49fbe9ec7953ab41b57079aa2e3ab35cbf07cb0c62423f4631237312b9",
+    "results/nonlinear_representations/geometry_style.json": "6a73962c8f2d2d50385dde41ace0dfce327f77f2dd50a7f3d1ebe96c79a84f45",
+    "results/nonlinear_representations/sweep_results/models/model_n64_m2_l2_S0.95.pt": "053053d89ed0f4cf089b627fc6b76b5e85bfc525435fa4f7905965a68bc42984",
+    "results/nonlinear_representations/sweep_results/models/model_n64_m2_l3_S0.95.pt": "5a43a75e8e01a72786a1e2c517bf1baea9b70b8b6ca1e267c5d1548fe0e50012",
+    "results/nonlinear_representations/sweep_results/models/model_n64_m2_l4_S0.95.pt": "529363ca9bad896a14af1373ef855d429fb061d6cfcc9dfe8c04dcee509c8705"
+  },
+  "outputs": {
+    "fig_canonical_scaling.png": "fd85364188689a2a837cf872a78ce04daf0c7d2c345fe65b94968489f16dad64",
+    "fig_mse_heatmap.png": "db38bf24e0c45594f7feeb9a201b50fba477db14592a342f153b90351b513686",
+    "fig_m2_visualizations.png": "cdf22ad6ae24b98d2c5ba3ad89a9c10364fdcf04cdc011d6e93a8d6e9deb848f"
+  }
+}

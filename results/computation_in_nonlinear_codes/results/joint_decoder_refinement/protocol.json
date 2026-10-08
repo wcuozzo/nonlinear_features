@@ -1,0 +1,65 @@
+{
+  "experiment": "32 matched decoder restarts on each of 13 historical XOR circuits",
+  "encoder_seeds": [
+    9
+  ],
+  "reconstruction_weights": [
+    0.0,
+    1.0,
+    3.0,
+    10.0
+  ],
+  "total_training_runs": 1664,
+  "source_circuits": [
+    66,
+    71,
+    73,
+    84,
+    85,
+    87,
+    88,
+    89,
+    90,
+    100,
+    102,
+    103,
+    105
+  ],
+  "decoder_restarts_per_circuit_per_weight": 32,
+  "steps": 20000,
+  "seed": 314159,
+  "dtype": "float32",
+  "optimizer": "Adam",
+  "decoder_learning_rates": [
+    0.001,
+    0.003,
+    0.01,
+    0.03
+  ],
+  "circuit_rate_multiplier": 0.01,
+  "schedule": "Initial learning rates for first 75% of steps; one tenth thereafter",
+  "positive_weight_objective": "mean XOR BCE + lambda * mean four-bit reconstruction BCE",
+  "zero_weight_control": "Circuit frozen; decoder fits the original fixed final codes using reconstruction BCE",
+  "decoder_standardization": "Fixed means and standard deviations of each original circuit final code, shared across arms and folded into exported decoder",
+  "checkpoint_selection": "Frozen control: maximize reconstructed patterns, then minimize reconstruction loss. Joint: maximize patterns with all six outputs correct, then total correct task-patterns, then minimize joint loss. Every 250 steps including endpoints; no readability term.",
+  "paired_arms": "Identical initial circuit, decoder, learning-rate assignment and decoder normalization",
+  "architecture": {
+    "encoder": [
+      4,
+      4,
+      4,
+      2
+    ],
+    "decoders": [
+      2,
+      4,
+      4,
+      4
+    ],
+    "residual_blocks": 4,
+    "state_width": 2,
+    "branch_width": 2
+  },
+  "initial_weights_sha256": "17b974e70bdf84ce7c11a4dce71ef95490a94f8c14dd1146adc79b63df061084",
+  "source_sha256": "fdca44994637d2a90cab526c8f6d7fb60a2f548f259e7dec32e86b6e9f8731f4"
+}

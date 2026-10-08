@@ -1,0 +1,560 @@
+[
+  {
+    "model_index": 0,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 1,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 3,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 6,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 7,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 9,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 10,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 11,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 12,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 16,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 17,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 18,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 19,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 20,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 21,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 24,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 25,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 26,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 27,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 29,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 30,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 32,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 33,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 36,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 39,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 40,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 41,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 43,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 44,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 47,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 48,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 51,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 54,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 56,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 58,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 60,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 62,
+    "encoder_seed": 4,
+    "persistent_nonlinear_inputs_numerical": [
+      2,
+      3
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 66,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 71,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 73,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 84,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 85,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 87,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 88,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 89,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 90,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 95,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": false,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 100,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 102,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 103,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  },
+  {
+    "model_index": 105,
+    "encoder_seed": 9,
+    "persistent_nonlinear_inputs_numerical": [
+      1,
+      2
+    ],
+    "standalone_float32_task_exact": true,
+    "every_pair_numerical": true,
+    "unique_final_states": 16
+  }
+]

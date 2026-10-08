@@ -1,0 +1,5 @@
+{
+  "store": "results/nonlinear_representations/sweep_results",
+  "status": "reported",
+  "note": "Saved all-untied sweep used for the reported analysis. The included training code is the current implementation; see REPRODUCING.md for rerun guidance."
+}

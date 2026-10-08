@@ -1,0 +1,12 @@
+{
+  "stage": "compressor",
+  "seed": 0,
+  "hidden_width": 4,
+  "input_exact": 0.625,
+  "loss": 0.1478089690208435,
+  "affine_fvu": 0.0019170481245964766,
+  "xor_separable": [
+    false,
+    false
+  ]
+}
